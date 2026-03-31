@@ -269,7 +269,7 @@
             <!-- Bento Grid Layout -->
             <div class="bento-grid">
                 <!-- Ceviche Mixto - Grande -->
-                <div class="bento-item large" style="background-image: url('https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&h=800&fit=crop&q=90')">
+                <div class="bento-item large" style="background-image: url('https://www.sabormarino.com/assets/images/products/2_NdZLz3l3.png')">
                     <div class="bento-overlay"></div>
                     <div class="bento-content">
                         <span class="bento-tag">Estrella de la Casa</span>
@@ -280,7 +280,7 @@
                 </div>
 
                 <!-- Ceviche Clásico -->
-                <div class="bento-item medium" style="background-image: url('https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=500&h=500&fit=crop&q=90')">
+                <div class="bento-item medium" style="background-image: url('https://www.shutterstock.com/image-photo/peruvian-ceviche-traditional-food-260nw-2090292532.jpg')">
                     <div class="bento-overlay"></div>
                     <div class="bento-content">
                         <h3>Ceviche Clásico</h3>
@@ -288,26 +288,8 @@
                     </div>
                 </div>
 
-                <!-- Leche de Tigre -->
-                <div class="bento-item small" style="background-image: url('https://images.unsplash.com/photo-1625943553852-781c6dd46faa?w=400&h=400&fit=crop&q=90')">
-                    <div class="bento-overlay"></div>
-                    <div class="bento-content">
-                        <h3>Leche de Tigre</h3>
-                        <p>Energizante marino</p>
-                    </div>
-                </div>
-
-                <!-- Arroz con Mariscos -->
-                <div class="bento-item medium" style="background-image: url('https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&h=500&fit=crop&q=90')">
-                    <div class="bento-overlay"></div>
-                    <div class="bento-content">
-                        <h3>Arroz con Mariscos</h3>
-                        <p>Generoso, sabroso y contundente</p>
-                    </div>
-                </div>
-
                 <!-- Chicharrón de Pescado -->
-                <div class="bento-item tall" style="background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=400&h=600&fit=crop&q=90')">
+                <div class="bento-item small" style="background-image: url('https://i.ytimg.com/vi/TaTLMSrT8ao/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDeVqOe9YVHGrgDCQcIABHcPphcSQ')">
                     <div class="bento-overlay"></div>
                     <div class="bento-content">
                         <h3>Chicharrón de Pescado</h3>
@@ -315,8 +297,26 @@
                     </div>
                 </div>
 
+                <!-- Arroz con Mariscos -->
+                <div class="bento-item medium" style="background-image: url('https://static.wixstatic.com/media/9755d8_c65f90dcb02f4d7482cd02c3280e03ab~mv2.png/v1/fill/w_1000,h_563,al_c,q_90,usm_0.66_1.00_0.01/9755d8_c65f90dcb02f4d7482cd02c3280e03ab~mv2.png')">
+                    <div class="bento-overlay"></div>
+                    <div class="bento-content">
+                        <h3>Arroz con Mariscos</h3>
+                        <p>Generoso, sabroso y contundente</p>
+                    </div>
+                </div>
+
+                <!--  Leche de Tigre -->
+                <div class="bento-item tall" style="background-image: url('https://i.pinimg.com/1200x/f2/f1/f5/f2f1f5c1e30a338e7989acc288953686.jpg')">
+                    <div class="bento-overlay"></div>
+                    <div class="bento-content">
+                        <h3>Leche de Tigre </h3>
+                        <p>Energizante marino</p>
+                    </div>
+                </div>
+
                 <!-- Jalea Mixta -->
-                <div class="bento-item small" style="background-image: url('https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&h=400&fit=crop&q=90')">
+                <div class="bento-item small" style="background-image: url('https://peru.info/archivos/publicacion/254-imagen-101541122022.jpg')">
                     <div class="bento-overlay"></div>
                     <div class="bento-content">
                         <h3>Jalea Mixta</h3>
@@ -534,40 +534,117 @@
                     </div>
                 </div>
 
-                <!-- Formulario Moderno -->
+                <!-- Formulario Compacto y Optimizado -->
                 <div class="contacto-right">
                     <div class="form-container-modern">
-                        <h3>Envíanos un mensaje</h3>
-                        <p>¿Tienes alguna consulta? Escríbenos y te responderemos pronto</p>
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Envíanos un mensaje</h3>
+                            <p>Completa el formulario y te responderemos pronto</p>
+                        </div>
                         
-                        <form class="form-modern" id="contactForm">
-                            <div class="form-field">
-                                <input type="text" id="name" required>
-                                <label for="name">Tu nombre</label>
+                        <form class="form-modern" id="contactForm" novalidate>
+                            <!-- Nombre Completo -->
+                            <div class="form-group">
+                                <div class="form-field">
+                                    <i class="fas fa-user field-icon"></i>
+                                    <input type="text" id="name" class="form-input" placeholder="" required autocomplete="name">
+                                    <label for="name" class="form-label">Nombre completo *</label>
+                                    <span class="form-error"></span>
+                                </div>
                             </div>
-                            
-                            <div class="form-field">
-                                <input type="tel" id="phone">
-                                <label for="phone">Teléfono (opcional)</label>
+
+                            <!-- Teléfono (más importante que email) -->
+                            <div class="form-group">
+                                <div class="form-field">
+                                    <i class="fas fa-phone field-icon"></i>
+                                    <input type="tel" id="phone" class="form-input" placeholder="" required autocomplete="tel" pattern="[0-9]{9}">
+                                    <label for="phone" class="form-label">Teléfono (WhatsApp) *</label>
+                                    <span class="form-error"></span>
+                                </div>
                             </div>
-                            
-                            <div class="form-field">
-                                <textarea id="message" rows="4" required></textarea>
-                                <label for="message">Tu mensaje</label>
+
+                            <!-- Tipo de Consulta -->
+                            <div class="form-group">
+                                <div class="form-field form-select-wrap">
+                                    <i class="fas fa-question-circle field-icon"></i>
+                                    <select id="inquiryType" class="form-input form-select" required>
+                                        <option value="" disabled selected>Selecciona una opción</option>
+                                        <option value="consulta">Consulta General</option>
+                                        <option value="reserva">Reserva de Mesa</option>
+                                        <option value="delivery">Pedido / Delivery</option>
+                                        <option value="evento">Evento / Catering</option>
+                                    </select>
+                                    <label for="inquiryType" class="form-label selected">Tipo de consulta *</label>
+                                    <i class="fas fa-chevron-down select-arrow"></i>
+                                    <span class="form-error"></span>
+                                </div>
                             </div>
-                            
-                            <button type="submit" class="btn-modern primary full">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>Enviar por WhatsApp</span>
+
+                            <!-- Campos adicionales para Reserva -->
+                            <div id="reservationFields" class="reservation-fields" style="display: none;">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <i class="fas fa-users field-icon"></i>
+                                            <input type="number" id="guests" class="form-input" placeholder="" min="1" max="20">
+                                            <label for="guests" class="form-label">N° de personas</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <i class="fas fa-calendar field-icon"></i>
+                                            <input type="date" id="date" class="form-input" placeholder="">
+                                            <label for="date" class="form-label">Fecha</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mensaje -->
+                            <div class="form-group">
+                                <div class="form-field">
+                                    <i class="fas fa-comment-dots field-icon"></i>
+                                    <textarea id="message" class="form-input" rows="3" placeholder="" required maxlength="300"></textarea>
+                                    <label for="message" class="form-label">Tu mensaje *</label>
+                                    <span class="form-error"></span>
+                                    <span class="char-counter"><span id="charCount">0</span>/300</span>
+                                </div>
+                            </div>
+
+                            <!-- Botón de Envío -->
+                            <button type="submit" class="btn-modern primary full btn-submit">
+                                <span class="btn-text">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>Enviar por WhatsApp</span>
+                                </span>
+                                <span class="btn-loader" style="display: none;">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <span>Enviando...</span>
+                                </span>
                             </button>
+
+                            <p class="form-disclaimer">* Campos obligatorios</p>
                         </form>
+
+                        <!-- Mensaje de Éxito -->
+                        <div class="form-success" id="successMessage" style="display: none;">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4>¡Mensaje enviado!</h4>
+                            <p>Te responderemos pronto por WhatsApp.</p>
+                            <button class="btn-modern secondary" onclick="resetForm()">Enviar otro mensaje</button>
+                        </div>
 
                         <div class="social-modern">
                             <p>O síguenos en:</p>
                             <div class="social-links-modern">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-tiktok"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                             </div>
                         </div>
                     </div>
@@ -622,7 +699,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Cevichería El Carajito. Caraz, Perú</p>
+                <p>&copy; <a href="https://jhoseptq.github.io/Misitioweb/"><b style="color: white;">2026 J&G Web Studio.</b></a></p>
             </div>
         </div>
     </footer>

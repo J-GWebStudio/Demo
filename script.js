@@ -183,25 +183,305 @@ const statsObserver = new IntersectionObserver((entries) => {
 
 stats.forEach(stat => statsObserver.observe(stat));
 
-// Contact Form
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value || '';
-        const message = document.getElementById('message').value;
-        
-        let whatsappMsg = `Hola, soy ${name}.\n\n${message}`;
-        if (phone) {
-            whatsappMsg += `\n\nMi teléfono: ${phone}`;
+// ============================================
+// 📝 FORMULARIO DE CONTACTO COMPACTO
+// ============================================
+
+// Validaciones y manejo del formulario
+const contactFormEnhanced = document.getElementById('contactForm');
+
+if (contactFormEnhanced) {
+    // Referencias a elementos
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const inquiryType = document.getElementById('inquiryType');
+    const guestsInput = document.getElementById('guests');
+    const dateInput = document.getElementById('date');
+    const messageInput = document.getElementById('message');
+    const charCounter = document.getElementById('charCount');
+    const reservationFields = document.getElementById('reservationFields');
+    const successMessage = document.getElementById('successMessage');
+
+    // Expresiones regulares para validación
+    const phoneRegex = /^[0-9]{9}$/;
+    
+    // Contador de caracteres (límite: 300)
+    if (messageInput && charCounter) {
+        messageInput.addEventListener('input', () => {
+            const length = messageInput.value.length;
+            charCounter.textContent = length;
+            
+            // Cambiar color si se acerca al límite
+            if (length > 270) {
+                charCounter.style.color = '#ef4444';
+            } else if (length > 240) {
+                charCounter.style.color = '#f59e0b';
+            } else {
+                charCounter.style.color = '#06b6d4';
+            }
+        });
+    }
+
+    // Mostrar/ocultar campos de reserva según el tipo de consulta
+    if (inquiryType && reservationFields) {
+        inquiryType.addEventListener('change', () => {
+            const selectedValue = inquiryType.value;
+            
+            if (selectedValue === 'reserva') {
+                reservationFields.style.display = 'block';
+                guestsInput?.setAttribute('required', '');
+                dateInput?.setAttribute('required', '');
+            } else {
+                reservationFields.style.display = 'none';
+                guestsInput?.removeAttribute('required');
+                dateInput?.removeAttribute('required');
+            }
+        });
+    }
+
+    // Establecer fecha mínima (hoy)
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    }
+
+    // Función de validación de campo individual
+    function validateField(input, validationType = 'required') {
+        const field = input.closest('.form-field');
+        const errorSpan = field?.querySelector('.form-error');
+        let isValid = true;
+        let errorMessage = '';
+
+        // Limpiar estados previos
+        field?.classList.remove('error', 'success');
+
+        // Validación requerido
+        if (input.hasAttribute('required') && !input.value.trim()) {
+            isValid = false;
+            errorMessage = 'Este campo es obligatorio';
         }
         
+        // Validación específica por tipo
+        if (isValid && input.value.trim()) {
+            switch (input.type) {
+                case 'tel':
+                    if (!phoneRegex.test(input.value.trim())) {
+                        isValid = false;
+                        errorMessage = 'Ingresa 9 dígitos (ej: 947469343)';
+                    }
+                    break;
+                case 'number':
+                    const num = parseInt(input.value);
+                    if (isNaN(num) || num < 1 || num > 20) {
+                        isValid = false;
+                        errorMessage = 'Entre 1 y 20 personas';
+                    }
+                    break;
+                case 'date':
+                    const selectedDate = new Date(input.value);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    if (selectedDate < today) {
+                        isValid = false;
+                        errorMessage = 'Selecciona una fecha futura';
+                    }
+                    break;
+            }
+        }
+
+        // Validación para select
+        if (input.tagName === 'SELECT' && input.hasAttribute('required')) {
+            if (!input.value || input.value === '') {
+                isValid = false;
+                errorMessage = 'Selecciona una opción';
+            }
+        }
+
+        // Aplicar estado visual
+        if (errorSpan) {
+            errorSpan.textContent = errorMessage;
+        }
+        
+        if (!isValid) {
+            field?.classList.add('error');
+        } else if (input.value.trim()) {
+            field?.classList.add('success');
+        }
+
+        return isValid;
+    }
+
+    // Validar en tiempo real (blur)
+    const formInputs = [nameInput, phoneInput, inquiryType, messageInput, guestsInput, dateInput];
+    formInputs.forEach(input => {
+        if (input) {
+            input.addEventListener('blur', () => validateField(input));
+            
+            // También validar mientras escribe (después del primer blur)
+            let hasBlurred = false;
+            input.addEventListener('blur', () => hasBlurred = true, { once: true });
+            input.addEventListener('input', () => {
+                if (hasBlurred) {
+                    validateField(input);
+                }
+            });
+        }
+    });
+
+    // Manejo del envío del formulario
+    contactFormEnhanced.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Validar todos los campos
+        let formIsValid = true;
+        formInputs.forEach(input => {
+            if (input && input.offsetParent !== null) { // Solo validar campos visibles
+                if (!validateField(input)) {
+                    formIsValid = false;
+                }
+            }
+        });
+
+        if (!formIsValid) {
+            // Hacer scroll al primer error
+            const firstError = contactFormEnhanced.querySelector('.form-field.error');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.querySelector('input, select, textarea')?.focus();
+            }
+            return;
+        }
+
+        // Obtener valores del formulario
+        const formData = {
+            name: nameInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            inquiryType: inquiryType.value,
+            message: messageInput.value.trim(),
+            guests: guestsInput?.value || '',
+            date: dateInput?.value || ''
+        };
+
+        // Deshabilitar botón y mostrar loader
+        const submitBtn = contactFormEnhanced.querySelector('.btn-submit');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoader = submitBtn.querySelector('.btn-loader');
+        
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoader.style.display = 'flex';
+
+        // Simular pequeño delay para UX
+        await new Promise(resolve => setTimeout(resolve, 600));
+
+        // Construir mensaje para WhatsApp
+        let whatsappMsg = `¡Hola! Soy *${formData.name}*\n\n`;
+        
+        // Agregar tipo de consulta
+        const inquiryTypes = {
+            'consulta': 'Consulta General',
+            'reserva': 'Reserva de Mesa',
+            'delivery': 'Pedido / Delivery',
+            'evento': 'Evento / Catering'
+        };
+        whatsappMsg += `📋 *Tipo:* ${inquiryTypes[formData.inquiryType] || formData.inquiryType}\n\n`;
+
+        // Si es reserva, agregar detalles
+        if (formData.inquiryType === 'reserva' && (formData.guests || formData.date)) {
+            whatsappMsg += `👥 *Personas:* ${formData.guests || 'No especificado'}\n`;
+            if (formData.date) {
+                whatsappMsg += `📅 *Fecha:* ${new Date(formData.date).toLocaleDateString('es-PE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}\n`;
+            }
+            whatsappMsg += `\n`;
+        }
+
+        // Agregar mensaje
+        whatsappMsg += `💬 *Mensaje:*\n${formData.message}\n\n`;
+
+        // Agregar datos de contacto
+        whatsappMsg += `📞 *WhatsApp:* ${formData.phone}`;
+
+        // Codificar y abrir WhatsApp
         const encodedMsg = encodeURIComponent(whatsappMsg);
         window.open(`https://wa.me/51947469343?text=${encodedMsg}`, '_blank');
+
+        // Mostrar mensaje de éxito
+        setTimeout(() => {
+            contactFormEnhanced.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            // Re-habilitar botón
+            submitBtn.disabled = false;
+            btnText.style.display = 'flex';
+            btnLoader.style.display = 'none';
+        }, 800);
+    });
+}
+
+// Función para resetear el formulario
+function resetForm() {
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMessage');
+    
+    if (form && successMsg) {
+        form.reset();
+        form.style.display = 'flex';
+        successMsg.style.display = 'none';
         
-        contactForm.reset();
+        // Limpiar todos los estados de validación
+        form.querySelectorAll('.form-field').forEach(field => {
+            field.classList.remove('error', 'success');
+        });
+        
+        // Resetear contador de caracteres
+        const charCounter = document.getElementById('charCount');
+        if (charCounter) {
+            charCounter.textContent = '0';
+            charCounter.style.color = '#06b6d4';
+        }
+        
+        // Ocultar campos de reserva
+        const reservationFields = document.getElementById('reservationFields');
+        if (reservationFields) {
+            reservationFields.style.display = 'none';
+        }
+    }
+}
+
+// Hacer la función global para que pueda ser llamada desde el HTML
+window.resetForm = resetForm;
+
+// ============================================
+// 📱 MENÚ MÓVIL
+// ============================================
+
+const mobileToggle = document.getElementById('mobileToggle');
+const navSide = document.querySelector('.nav-side');
+
+if (mobileToggle && navSide) {
+    mobileToggle.addEventListener('click', () => {
+        navSide.classList.toggle('active');
+        mobileToggle.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    const navLinks = navSide.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navSide.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    });
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+        if (!navSide.contains(e.target) && !mobileToggle.contains(e.target)) {
+            navSide.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
     });
 }
 
