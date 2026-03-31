@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceviches - Cevichería El Carajito</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .menu-page {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+            padding: 2rem 0 4rem;
+        }
+
+        .menu-header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.15);
+        }
+
+        .back-button:hover {
+            background: var(--cyan);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .menu-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.3));
+        }
+
+        .menu-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gradient-ocean);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid #f1f5f9;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.2);
+        }
+
+        .menu-card-image {
+            height: 220px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-card-image i {
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.9);
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .menu-card-popular {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(245, 158, 11, 0.95);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-card-spicy {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(239, 68, 68, 0.95);
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 50%;
+            font-size: 1rem;
+        }
+
+        .menu-card-content {
+            padding: 2rem;
+        }
+
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .menu-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cyan);
+            white-space: nowrap;
+        }
+
+        .menu-card-price small {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .menu-card-description {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--cyan-dark);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .feature-tag i {
+            font-size: 0.9rem;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-order {
+            flex: 1;
+            padding: 0.9rem 1.5rem;
+            background: var(--gradient-ocean);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-order:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-whatsapp {
+            padding: 0.9rem 1.2rem;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .menu-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .menu-card-image {
+                height: 180px;
+            }
+
+            .menu-card-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón WhatsApp Flotante -->
+    <a href="https://wa.me/51947469343" 
+       class="whatsapp-btn" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navegación Lateral Moderna -->
+    <nav class="nav-side">
+        <div class="nav-logo">
+            <div class="logo-icon">🐟</div>
+            <span class="logo-text">EL<br>CARAJITO</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#inicio" class="nav-dot" data-text="Inicio"></a></li>
+            <li><a href="index.html#sabor" class="nav-dot" data-text="Nuestro Sabor"></a></li>
+            <li class="has-submenu">
+                <a href="index.html#platos" class="nav-dot active" data-text="Platos">
+                    <i class="submenu-arrow fas fa-chevron-right"></i>
+                </a>
+                <div class="submenu-carta">
+                    <div class="submenu-header">
+                        <h4>Nuestra Carta</h4>
+                    </div>
+                    <div class="submenu-items">
+                        <a href="ceviches.html" class="submenu-item active" data-category="ceviches">
+                            <i class="fas fa-fish"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Ceviches</span>
+                                <span class="submenu-desc">Frescos y deliciosos</span>
+                            </div>
+                        </a>
+                        <a href="platos-marinos.html" class="submenu-item" data-category="marinos">
+                            <i class="fas fa-shrimp"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Platos Marinos</span>
+                                <span class="submenu-desc">Variedad del mar</span>
+                            </div>
+                        </a>
+                        <a href="chicharrones.html" class="submenu-item" data-category="chicharrones">
+                            <i class="fas fa-drumstick-bite"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Chicharrones</span>
+                                <span class="submenu-desc">Crujientes y sabrosos</span>
+                            </div>
+                        </a>
+                        <a href="arroces.html" class="submenu-item" data-category="arroces">
+                            <i class="fas fa-bowl-rice"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Arroces</span>
+                                <span class="submenu-desc">Con mariscos frescos</span>
+                            </div>
+                        </a>
+                        <a href="jaleas.html" class="submenu-item" data-category="jaleas">
+                            <i class="fas fa-utensils"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Jaleas</span>
+                                <span class="submenu-desc">Mixtas y especiales</span>
+                            </div>
+                        </a>
+                        <a href="bebidas.html" class="submenu-item" data-category="bebidas">
+                            <i class="fas fa-glass-water"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Bebidas</span>
+                                <span class="submenu-desc">Refrescantes</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="index.html#opiniones" class="nav-dot" data-text="Opiniones"></a></li>
+            <li><a href="index.html#contacto" class="nav-dot" data-text="Contacto"></a></li>
+        </ul>
+        <div class="nav-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="tel:947469343"><i class="fas fa-phone"></i></a>
+        </div>
+    </nav>
+
+    <div class="menu-page">
+        <div class="menu-header">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Volver al Inicio
+            </a>
+            <div class="menu-icon">🐟</div>
+            <h1>Ceviches Frescos</h1>
+            <p>Los mejores ceviches preparados con pescado del día y limones de la región</p>
+        </div>
+
+        <div class="menu-container">
+            <div class="menu-grid">
+                <!-- Ceviche Clásico -->
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <i class="fas fa-fish"></i>
+                        <span class="menu-card-popular">⭐ Popular</span>
+                        <span class="menu-card-spicy">🌶️</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div>
+                                <h3 class="menu-card-title">Ceviche Clásico</h3>
+                            </div>
+                            <div class="menu-card-price">
+                                S/ <strong>25</strong>
+                            </div>
+                        </div>
+                        <p class="menu-card-description">
+                            Pescado fresco del día marinado en limón, cebolla morada, ají limo, 
+                            cilantro y camote. El auténtico sabor caracino.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-leaf"></i> Fresco</span>
+                            <span class="feature-tag"><i class="fas fa-clock"></i> 15 min</span>
+                            <span class="feature-tag"><i class="fas fa-users"></i> 1-2 personas</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ordenar
+                            </button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Ceviche Clásico', 25)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ceviche Mixto -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);">
+                        <i class="fas fa-fish"></i>
+                        <span class="menu-card-popular">⭐ Popular</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div>
+                                <h3 class="menu-card-title">Ceviche Mixto</h3>
+                            </div>
+                            <div class="menu-card-price">
+                                S/ <strong>30</strong>
+                            </div>
+                        </div>
+                        <p class="menu-card-description">
+                            Combinación perfecta de pescado, camarones, pulpo y calamar 
+                            marinados en nuestro secreto limón caracino.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-star"></i> Premium</span>
+                            <span class="feature-tag"><i class="fas fa-fish"></i> Variado</span>
+                            <span class="feature-tag"><i class="fas fa-users"></i> 2 personas</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ordenar
+                            </button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Ceviche Mixto', 30)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ceviche de Conchas Negras -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <span class="menu-card-spicy">🌶️🌶️</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div>
+                                <h3 class="menu-card-title">Ceviche Conchas Negras</h3>
+                            </div>
+                            <div class="menu-card-price">
+                                S/ <strong>35</strong>
+                            </div>
+                        </div>
+                        <p class="menu-card-description">
+                            Exclusivas conchas negras frescas en su jugo, marinadas con 
+                            limón, cebolla y rocoto. Un manjar del norte.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-gem"></i> Exclusivo</span>
+                            <span class="feature-tag"><i class="fas fa-fire"></i> Picante</span>
+                            <span class="feature-tag"><i class="fas fa-trophy"></i> Premium</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ordenar
+                            </button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Ceviche Conchas Negras', 35)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ceviche de Pulpo -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div>
+                                <h3 class="menu-card-title">Ceviche de Pulpo</h3>
+                            </div>
+                            <div class="menu-card-price">
+                                S/ <strong>32</strong>
+                            </div>
+                        </div>
+                        <p class="menu-card-description">
+                            Pulpo tierno cocido a la perfección, marinado en limón fresco 
+                            con aceite de oliva, cebolla y perejil.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-heart"></i> Suave</span>
+                            <span class="feature-tag"><i class="fas fa-star"></i> Especial</span>
+                            <span class="feature-tag"><i class="fas fa-leaf"></i> Saludable</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ordenar
+                            </button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Ceviche de Pulpo', 32)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leche de Tigre -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #14b8a6 0%, #10b981 100%);">
+                        <i class="fas fa-mug-hot"></i>
+                        <span class="menu-card-popular">⚡ Energizante</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div>
+                                <h3 class="menu-card-title">Leche de Tigre</h3>
+                            </div>
+                            <div class="menu-card-price">
+                                S/ <strong>15</strong>
+                            </div>
+                        </div>
+                        <p class="menu-card-description">
+                            El líquido mágico del ceviche con trozos de pescado. 
+                            Perfecto para comenzar el día o como entrada energizante.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-bolt"></i> Energía</span>
+                            <span class="feature-tag"><i class="fas fa-fire"></i> Intenso</span>
+                            <span class="feature-tag"><i class="fas fa-glass"></i> Vaso</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ordenar
+                            </button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Leche de Tigre', 15)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ceviche de Camarones -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                        <i class="fas fa-shrimp"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div>
+                                <h3 class="menu-card-title">Ceviche de Camarones</h3>
+                            </div>
+                            <div class="menu-card-price">
+                                S/ <strong>28</strong>
+                            </div>
+                        </div>
+                        <p class="menu-card-description">
+                            Camarones frescos marinados en limón con un toque de ají amarillo, 
+                            cebolla morada y choclo andino.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-shrimp"></i> Camarones</span>
+                            <span class="feature-tag"><i class="fas fa-leaf"></i> Fresco</span>
+                            <span class="feature-tag"><i class="fas fa-users"></i> 1-2 personas</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i>
+                                Ordenar
+                            </button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Ceviche de Camarones', 28)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function ordenarWhatsApp(plato, precio) {
+            const mensaje = `Hola! Me interesa ordenar:\n\n🍽️ *${plato}*\n💰 Precio: S/ ${precio}\n\n¿Está disponible?`;
+            const url = `https://wa.me/51947469343?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+
+        // Animación de entrada
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.menu-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

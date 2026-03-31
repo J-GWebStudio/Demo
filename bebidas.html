@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas - Cevichería El Carajito</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .menu-page {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #ffffff 0%, #dbeafe 50%, #ffffff 100%);
+            padding: 2rem 0 4rem;
+        }
+
+        .menu-header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.15);
+        }
+
+        .back-button:hover {
+            background: var(--cyan);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .menu-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.3));
+        }
+
+        .menu-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gradient-ocean);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid #dbeafe;
+            transition: all 0.4s ease;
+        }
+
+        .menu-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.25);
+        }
+
+        .menu-card-image {
+            height: 200px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-card-image i {
+            font-size: 4.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .menu-card-popular {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(6, 182, 212, 0.95);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .menu-card-content {
+            padding: 1.75rem;
+        }
+
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .menu-card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .menu-card-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--cyan);
+            white-space: nowrap;
+        }
+
+        .menu-card-description {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--cyan-dark);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-order {
+            flex: 1;
+            padding: 0.9rem 1.5rem;
+            background: var(--gradient-ocean);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-order:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-whatsapp {
+            padding: 0.9rem 1.2rem;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .menu-header h1 { font-size: 2.5rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón WhatsApp Flotante -->
+    <a href="https://wa.me/51947469343" 
+       class="whatsapp-btn" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navegación Lateral Moderna -->
+    <nav class="nav-side">
+        <div class="nav-logo">
+            <div class="logo-icon">🐟</div>
+            <span class="logo-text">EL<br>CARAJITO</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#inicio" class="nav-dot" data-text="Inicio"></a></li>
+            <li><a href="index.html#sabor" class="nav-dot" data-text="Nuestro Sabor"></a></li>
+            <li class="has-submenu">
+                <a href="index.html#platos" class="nav-dot active" data-text="Platos">
+                    <i class="submenu-arrow fas fa-chevron-right"></i>
+                </a>
+                <div class="submenu-carta">
+                    <div class="submenu-header">
+                        <h4>Nuestra Carta</h4>
+                    </div>
+                    <div class="submenu-items">
+                        <a href="ceviches.html" class="submenu-item" data-category="ceviches">
+                            <i class="fas fa-fish"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Ceviches</span>
+                                <span class="submenu-desc">Frescos y deliciosos</span>
+                            </div>
+                        </a>
+                        <a href="platos-marinos.html" class="submenu-item" data-category="marinos">
+                            <i class="fas fa-shrimp"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Platos Marinos</span>
+                                <span class="submenu-desc">Variedad del mar</span>
+                            </div>
+                        </a>
+                        <a href="chicharrones.html" class="submenu-item" data-category="chicharrones">
+                            <i class="fas fa-drumstick-bite"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Chicharrones</span>
+                                <span class="submenu-desc">Crujientes y sabrosos</span>
+                            </div>
+                        </a>
+                        <a href="arroces.html" class="submenu-item" data-category="arroces">
+                            <i class="fas fa-bowl-rice"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Arroces</span>
+                                <span class="submenu-desc">Con mariscos frescos</span>
+                            </div>
+                        </a>
+                        <a href="jaleas.html" class="submenu-item" data-category="jaleas">
+                            <i class="fas fa-utensils"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Jaleas</span>
+                                <span class="submenu-desc">Mixtas y especiales</span>
+                            </div>
+                        </a>
+                        <a href="bebidas.html" class="submenu-item active" data-category="bebidas">
+                            <i class="fas fa-glass-water"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Bebidas</span>
+                                <span class="submenu-desc">Refrescantes</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="index.html#opiniones" class="nav-dot" data-text="Opiniones"></a></li>
+            <li><a href="index.html#contacto" class="nav-dot" data-text="Contacto"></a></li>
+        </ul>
+        <div class="nav-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="tel:947469343"><i class="fas fa-phone"></i></a>
+        </div>
+    </nav>
+
+    <div class="menu-page">
+        <div class="menu-header">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Volver al Inicio
+            </a>
+            <div class="menu-icon">🥤</div>
+            <h1>Bebidas Refrescantes</h1>
+            <p>Bebidas naturales y gaseosas para acompañar tus platillos</p>
+        </div>
+
+        <div class="menu-container">
+            <div class="menu-grid">
+                <!-- Chicha Morada -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);">
+                        <i class="fas fa-glass-water"></i>
+                        <span class="menu-card-popular">🇵🇪 Tradicional</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div><h3 class="menu-card-title">Chicha Morada</h3></div>
+                            <div class="menu-card-price">S/ <strong>5</strong></div>
+                        </div>
+                        <p class="menu-card-description">
+                            Bebida tradicional peruana preparada con maíz morado, 
+                            piña, manzana y especias. Natural y refrescante.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-leaf"></i> Natural</span>
+                            <span class="feature-tag"><i class="fas fa-heart"></i> Tradicional</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Chicha Morada', 5)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Limonada Frozen -->
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <i class="fas fa-lemon"></i>
+                        <span class="menu-card-popular">❄️ Frozen</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div><h3 class="menu-card-title">Limonada Frozen</h3></div>
+                            <div class="menu-card-price">S/ <strong>7</strong></div>
+                        </div>
+                        <p class="menu-card-description">
+                            Limonada preparada con hielo frappe. Perfecta para el 
+                            clima de Caraz. Refrescante y deliciosa.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-snowflake"></i> Helada</span>
+                            <span class="feature-tag"><i class="fas fa-lemon"></i> Cítrica</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Limonada Frozen', 7)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inca Kola -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #facc15 0%, #fbbf24 100%);">
+                        <i class="fas fa-bottle-droplet"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div><h3 class="menu-card-title">Inca Kola</h3></div>
+                            <div class="menu-card-price">S/ <strong>4</strong></div>
+                        </div>
+                        <p class="menu-card-description">
+                            La bebida del Perú. Perfecta para acompañar 
+                            cualquier plato marino. Personal o familiar.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-flag"></i> Peruana</span>
+                            <span class="feature-tag"><i class="fas fa-snowflake"></i> Helada</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Inca Kola', 4)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jugo Natural -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);">
+                        <i class="fas fa-blender"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div><h3 class="menu-card-title">Jugos Naturales</h3></div>
+                            <div class="menu-card-price">S/ <strong>6</strong></div>
+                        </div>
+                        <p class="menu-card-description">
+                            Jugos de frutas frescas: papaya, piña, maracuyá, 
+                            naranja o surtido. Preparados al momento.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-leaf"></i> Natural</span>
+                            <span class="feature-tag"><i class="fas fa-apple-whole"></i> Frutas</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Jugo Natural', 6)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gaseosas -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #f43f5e 0%, #ef4444 100%);">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div><h3 class="menu-card-title">Gaseosas</h3></div>
+                            <div class="menu-card-price">S/ <strong>3</strong></div>
+                        </div>
+                        <p class="menu-card-description">
+                            Coca Cola, Sprite, Fanta y otras gaseosas. 
+                            Personal (500ml) o Familiar (1.5L).
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-bottle-droplet"></i> Variedad</span>
+                            <span class="feature-tag"><i class="fas fa-snowflake"></i> Helada</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Gaseosa', 3)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cerveza -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);">
+                        <i class="fas fa-beer-mug-empty"></i>
+                        <span class="menu-card-popular">🍺 Helada</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div><h3 class="menu-card-title">Cervezas</h3></div>
+                            <div class="menu-card-price">S/ <strong>8</strong></div>
+                        </div>
+                        <p class="menu-card-description">
+                            Pilsen, Cusqueña, Cristal. Bien heladas para acompañar 
+                            tus platos marinos. También disponible en jarra.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-snowflake"></i> Helada</span>
+                            <span class="feature-tag"><i class="fas fa-beer-mug-empty"></i> 650ml</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Cerveza', 8)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agua Mineral -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);">
+                        <i class="fas fa-droplet"></i>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div><h3 class="menu-card-title">Agua Mineral</h3></div>
+                            <div class="menu-card-price">S/ <strong>2</strong></div>
+                        </div>
+                        <p class="menu-card-description">
+                            Agua mineral San Luis o Cielo. 
+                            Con gas o sin gas. Presentación personal.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-droplet"></i> Pura</span>
+                            <span class="feature-tag"><i class="fas fa-snowflake"></i> Fría</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Agua Mineral', 2)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mate de Coca -->
+                <div class="menu-card">
+                    <div class="menu-card-image" style="background: linear-gradient(135deg, #84cc16 0%, #65a30d 100%);">
+                        <i class="fas fa-mug-hot"></i>
+                        <span class="menu-card-popular">🌿 Andino</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <div><h3 class="menu-card-title">Mate de Coca</h3></div>
+                            <div class="menu-card-price">S/ <strong>3</strong></div>
+                        </div>
+                        <p class="menu-card-description">
+                            Infusión caliente de hojas de coca. Ideal para 
+                            la altura y el clima andino de Caraz.
+                        </p>
+                        <div class="menu-card-features">
+                            <span class="feature-tag"><i class="fas fa-leaf"></i> Natural</span>
+                            <span class="feature-tag"><i class="fas fa-mug-hot"></i> Caliente</span>
+                        </div>
+                        <div class="menu-card-footer">
+                            <button class="btn-order"><i class="fas fa-shopping-cart"></i> Ordenar</button>
+                            <button class="btn-whatsapp" onclick="ordenarWhatsApp('Mate de Coca', 3)">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function ordenarWhatsApp(plato, precio) {
+            const mensaje = `Hola! Me interesa ordenar:\n\n🍽️ *${plato}*\n💰 Precio: S/ ${precio}\n\n¿Está disponible?`;
+            window.open(`https://wa.me/51947469343?text=${encodeURIComponent(mensaje)}`, '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.menu-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

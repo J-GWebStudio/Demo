@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cevichería El Carajito - El verdadero sabor del ceviche caracino. Restaurante de comida marina en Caraz, Perú. Frescura, tradición y sabor en cada plato.">
+    <meta name="keywords" content="cevichería, ceviche, comida marina, mariscos, Caraz, Perú, restaurante, pescado fresco">
+    <meta name="author" content="Cevichería El Carajito">
+    <title>El Carajito 🐟 Sabor Caracino Auténtico</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Ondas de fondo -->
+    <div class="waves-bg">
+        <svg class="wave wave-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="rgba(8, 145, 178, 0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        <svg class="wave wave-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="rgba(6, 182, 212, 0.05)" d="M0,224L48,213.3C96,203,192,181,288,176C384,171,480,181,576,170.7C672,160,768,128,864,128C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+    <!-- WhatsApp Floating -->
+    <a href="https://wa.me/51947469343?text=Hola,%20quisiera%20información" 
+       class="whatsapp-btn" 
+       target="_blank"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navegación Lateral Moderna -->
+    <nav class="nav-side">
+        <div class="nav-logo">
+            <div class="logo-icon">🐟</div>
+            <span class="logo-text">EL<br>CARAJITO</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio" class="nav-dot active" data-text="Inicio"></a></li>
+            <li><a href="#sabor" class="nav-dot" data-text="Nuestro Sabor"></a></li>
+            <li class="has-submenu">
+                <a href="#platos" class="nav-dot" data-text="Platos">
+                    <i class="submenu-arrow fas fa-chevron-right"></i>
+                </a>
+                <div class="submenu-carta">
+                    <div class="submenu-header">
+                        <h4>Nuestra Carta</h4>
+                    </div>
+                    <div class="submenu-items">
+                        <a href="ceviches.html" class="submenu-item" data-category="ceviches">
+                            <i class="fas fa-fish"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Ceviches</span>
+                                <span class="submenu-desc">Frescos y deliciosos</span>
+                            </div>
+                        </a>
+                        <a href="platos-marinos.html" class="submenu-item" data-category="marinos">
+                            <i class="fas fa-shrimp"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Platos Marinos</span>
+                                <span class="submenu-desc">Variedad del mar</span>
+                            </div>
+                        </a>
+                        <a href="chicharrones.html" class="submenu-item" data-category="chicharrones">
+                            <i class="fas fa-drumstick-bite"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Chicharrones</span>
+                                <span class="submenu-desc">Crujientes y sabrosos</span>
+                            </div>
+                        </a>
+                        <a href="arroces.html" class="submenu-item" data-category="arroces">
+                            <i class="fas fa-bowl-rice"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Arroces</span>
+                                <span class="submenu-desc">Con mariscos frescos</span>
+                            </div>
+                        </a>
+                        <a href="jaleas.html" class="submenu-item" data-category="jaleas">
+                            <i class="fas fa-utensils"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Jaleas</span>
+                                <span class="submenu-desc">Mixtas y especiales</span>
+                            </div>
+                        </a>
+                        <a href="bebidas.html" class="submenu-item" data-category="bebidas">
+                            <i class="fas fa-glass-water"></i>
+                            <div class="submenu-info">
+                                <span class="submenu-title">Bebidas</span>
+                                <span class="submenu-desc">Refrescantes</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="#opiniones" class="nav-dot" data-text="Opiniones"></a></li>
+            <li><a href="#contacto" class="nav-dot" data-text="Contacto"></a></li>
+        </ul>
+        <div class="nav-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="tel:947469343"><i class="fas fa-phone"></i></a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Hero Moderno y Diferente -->
+    <section class="hero-modern" id="inicio">
+        <div class="hero-split">
+            <!-- Lado Izquierdo: Contenido -->
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span class="badge-star">⭐</span>
+                    <span class="badge-text">4.2/5 · 150+ opiniones</span>
+                </div>
+                <h1 class="hero-title-modern">
+                    <span class="title-line">El Verdadero</span>
+                    <span class="title-line big">SABOR</span>
+                    <span class="title-line">Caracino</span>
+                </h1>
+                <p class="hero-text">
+                    Descubre la auténtica experiencia del ceviche de Caraz. 
+                    Frescura del mar, tradición peruana, sabor inconfundible.
+                </p>
+                <div class="hero-actions">
+                    <a href="#platos" class="btn-modern primary">
+                        <span>Explorar Menú</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contacto" class="btn-modern secondary">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Cómo Llegar</span>
+                    </a>
+                </div>
+                <div class="hero-info">
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Abierto Hoy</strong>
+                            <span>Hasta las 4:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="info-divider"></div>
+                    <div class="info-item">
+                        <i class="fas fa-map-pin"></i>
+                        <div>
+                            <strong>Caraz</strong>
+                            <span>Sta. Rita</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Lado Derecho: Imagen Grande -->
+            <div class="hero-right">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=1000&fit=crop&q=90" 
+                         alt="Ceviche Fresco" 
+                         class="hero-main-img">
+                    <div class="hero-float-card card-1">
+                        <i class="fas fa-fish"></i>
+                        <span>Pescado<br>del Día</span>
+                    </div>
+                    <div class="hero-float-card card-2">
+                        <i class="fas fa-lemon"></i>
+                        <span>Limón<br>Orgánico</span>
+                    </div>
+                    <div class="hero-float-card card-3">
+                        <i class="fas fa-fire"></i>
+                        <span>Ají<br>Limo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="scroll-hint">
+            <div class="mouse"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- About Section Moderno -->
+    <section class="about-modern" id="sabor">
+        <div class="container-wide">
+            <div class="about-layout">
+                <div class="about-content-left">
+                    <span class="section-label-modern">Mi Rico Sabor Caracino</span>
+                    <h2 class="section-title-modern">
+                        Tradición que<br>
+                        <span class="gradient-text">se siente</span><br>
+                        en cada bocado
+                    </h2>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>15+</h3>
+                            <p>Años de<br>Experiencia</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Productos<br>Frescos</p>
+                        </div>
+                        <div class="stat">
+                            <h3>1000+</h3>
+                            <p>Clientes<br>Felices</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content-right">
+                    <p class="big-text">
+                        En <strong>Cevichería El Carajito</strong>, no solo servimos comida. 
+                        Compartimos la pasión por el mar, la dedicación en cada plato y 
+                        el orgullo de representar el auténtico sabor de Caraz.
+                    </p>
+                    <div class="features-modern">
+                        <div class="feat">
+                            <div class="feat-icon">🐠</div>
+                            <div>
+                                <h4>Pescado Diario</h4>
+                                <p>Selección fresca cada mañana directo del mercado</p>
+                            </div>
+                        </div>
+                        <div class="feat">
+                            <div class="feat-icon">🍋</div>
+                            <div>
+                                <h4>Receta Tradicional</h4>
+                                <p>El punto exacto del limón, transmitido por generaciones</p>
+                            </div>
+                        </div>
+                        <div class="feat">
+                            <div class="feat-icon">👨‍🍳</div>
+                            <div>
+                                <h4>Sazón Casero</h4>
+                                <p>Preparado con amor y dedicación como en casa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platos Section - Diseño Bento Grid Moderno -->
+    <section class="platos-section" id="platos">
+        <div class="container-wide">
+            <div class="section-head-center">
+                <span class="section-label-modern">Nuestra Carta</span>
+                <h2 class="section-title-modern">
+                    Lo mejor del<br>
+                    <span class="gradient-text">mar peruano</span>
+                </h2>
+            </div>
+
+            <!-- Bento Grid Layout -->
+            <div class="bento-grid">
+                <!-- Ceviche Mixto - Grande -->
+                <div class="bento-item large" style="background-image: url('https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&h=800&fit=crop&q=90')">
+                    <div class="bento-overlay"></div>
+                    <div class="bento-content">
+                        <span class="bento-tag">Estrella de la Casa</span>
+                        <h3>Ceviche Mixto</h3>
+                        <p>Pescado, camarones, pulpo y calamar en leche de tigre especial</p>
+                        <button class="btn-ghost">Pedir</button>
+                    </div>
+                </div>
+
+                <!-- Ceviche Clásico -->
+                <div class="bento-item medium" style="background-image: url('https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=500&h=500&fit=crop&q=90')">
+                    <div class="bento-overlay"></div>
+                    <div class="bento-content">
+                        <h3>Ceviche Clásico</h3>
+                        <p>El auténtico sabor caracino que nos representa</p>
+                    </div>
+                </div>
+
+                <!-- Leche de Tigre -->
+                <div class="bento-item small" style="background-image: url('https://images.unsplash.com/photo-1625943553852-781c6dd46faa?w=400&h=400&fit=crop&q=90')">
+                    <div class="bento-overlay"></div>
+                    <div class="bento-content">
+                        <h3>Leche de Tigre</h3>
+                        <p>Energizante marino</p>
+                    </div>
+                </div>
+
+                <!-- Arroz con Mariscos -->
+                <div class="bento-item medium" style="background-image: url('https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&h=500&fit=crop&q=90')">
+                    <div class="bento-overlay"></div>
+                    <div class="bento-content">
+                        <h3>Arroz con Mariscos</h3>
+                        <p>Generoso, sabroso y contundente</p>
+                    </div>
+                </div>
+
+                <!-- Chicharrón de Pescado -->
+                <div class="bento-item tall" style="background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=400&h=600&fit=crop&q=90')">
+                    <div class="bento-overlay"></div>
+                    <div class="bento-content">
+                        <h3>Chicharrón de Pescado</h3>
+                        <p>Crujiente por fuera, jugoso por dentro</p>
+                    </div>
+                </div>
+
+                <!-- Jalea Mixta -->
+                <div class="bento-item small" style="background-image: url('https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&h=400&fit=crop&q=90')">
+                    <div class="bento-overlay"></div>
+                    <div class="bento-content">
+                        <h3>Jalea Mixta</h3>
+                        <p>Para compartir</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Ver Menú Completo -->
+            <div class="center-action">
+                <a href="https://wa.me/51947469343?text=Quiero%20ver%20el%20menú%20completo" target="_blank" class="btn-modern primary large">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Ver Menú Completo</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opiniones Carousel Moderno -->
+    <section class="reviews-modern" id="opiniones">
+        <div class="container-wide">
+            <div class="section-head-center">
+                <span class="section-label-modern">Opiniones</span>
+                <h2 class="section-title-modern">
+                    Lo que dicen<br>
+                    <span class="gradient-text">nuestros clientes</span>
+                </h2>
+                <div class="rating-hero">
+                    <div class="stars-big">⭐⭐⭐⭐<span class="half">⭐</span></div>
+                    <div class="rating-num">4.2<span>/5</span></div>
+                    <p>Basado en 150+ reseñas verificadas</p>
+                </div>
+            </div>
+
+            <div class="reviews-carousel-3d">
+                <button class="carousel-nav prev" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
+                        <div class="review-card-modern active">
+                            <div class="card-inner">
+                                <div class="quote-icon">"</div>
+                                <p class="review-text-modern">
+                                    El mejor ceviche que he probado en Caraz. La frescura es incomparable 
+                                    y el punto del limón es perfecto. ¡Volveré siempre!
+                                </p>
+                                <div class="reviewer">
+                                    <div class="reviewer-avatar">M</div>
+                                    <div class="reviewer-info">
+                                        <strong>María Gonzales</strong>
+                                        <div class="stars-small">⭐⭐⭐⭐⭐</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-card-modern">
+                            <div class="card-inner">
+                                <div class="quote-icon">"</div>
+                                <p class="review-text-modern">
+                                    Porciones generosas, sabor auténtico y precios justos. 
+                                    El arroz con mariscos es espectacular.
+                                </p>
+                                <div class="reviewer">
+                                    <div class="reviewer-avatar">J</div>
+                                    <div class="reviewer-info">
+                                        <strong>José Ramírez</strong>
+                                        <div class="stars-small">⭐⭐⭐⭐⭐</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-card-modern">
+                            <div class="card-inner">
+                                <div class="quote-icon">"</div>
+                                <p class="review-text-modern">
+                                    Ambiente familiar y comida deliciosa. La leche de tigre 
+                                    es energizante y el servicio muy amable.
+                                </p>
+                                <div class="reviewer">
+                                    <div class="reviewer-avatar">A</div>
+                                    <div class="reviewer-info">
+                                        <strong>Ana Torres</strong>
+                                        <div class="stars-small">⭐⭐⭐⭐</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-card-modern">
+                            <div class="card-inner">
+                                <div class="quote-icon">"</div>
+                                <p class="review-text-modern">
+                                    Visitando Caraz encontré esta joya. El chicharrón de pescado 
+                                    crujiente y el ceviche mixto son imperdibles.
+                                </p>
+                                <div class="reviewer">
+                                    <div class="reviewer-avatar">C</div>
+                                    <div class="reviewer-info">
+                                        <strong>Carlos Mendoza</strong>
+                                        <div class="stars-small">⭐⭐⭐⭐⭐</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-card-modern">
+                            <div class="card-inner">
+                                <div class="quote-icon">"</div>
+                                <p class="review-text-modern">
+                                    Calidad-precio excelente. Los platos son abundantes y el sabor 
+                                    es auténtico caracino. La atención familiar es increíble.
+                                </p>
+                                <div class="reviewer">
+                                    <div class="reviewer-avatar">L</div>
+                                    <div class="reviewer-info">
+                                        <strong>Lucía Paredes</strong>
+                                        <div class="stars-small">⭐⭐⭐⭐</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-card-modern">
+                            <div class="card-inner">
+                                <div class="quote-icon">"</div>
+                                <p class="review-text-modern">
+                                    Un lugar que recomiendo totalmente. La jalea mixta está 
+                                    deliciosa y el servicio es rápido y amable.
+                                </p>
+                                <div class="reviewer">
+                                    <div class="reviewer-avatar">R</div>
+                                    <div class="reviewer-info">
+                                        <strong>Roberto Silva</strong>
+                                        <div class="stars-small">⭐⭐⭐⭐⭐</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-nav next" aria-label="Siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="carousel-indicators">
+                    <span class="indicator active"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto y Ubicación Moderno -->
+    <section class="contacto-modern" id="contacto">
+        <div class="container-wide">
+            <div class="contacto-grid">
+                <!-- Info & Map -->
+                <div class="contacto-left">
+                    <span class="section-label-modern">Encuéntranos</span>
+                    <h2 class="section-title-modern">
+                        Visítanos en<br>
+                        <span class="gradient-text">Caraz</span>
+                    </h2>
+                    
+                    <div class="info-cards">
+                        <div class="info-card-modern">
+                            <div class="icon-wrap">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Dirección</h4>
+                                <p>X53Q+68C, Sta. Rita<br>Caraz 02167, Perú</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card-modern">
+                            <div class="icon-wrap">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Horario</h4>
+                                <p><strong>Lunes a Domingo</strong><br>Abierto hasta las 4:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card-modern">
+                            <div class="icon-wrap">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p><a href="tel:947469343">947 469 343</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.2!2d-77.81!3d-9.04!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDInMjQuMCJTIDc3wrA0OCczNi4wIlc!5e0!3m2!1ses!2spe!4v1234567890" 
+                            width="100%" 
+                            height="300" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Formulario Moderno -->
+                <div class="contacto-right">
+                    <div class="form-container-modern">
+                        <h3>Envíanos un mensaje</h3>
+                        <p>¿Tienes alguna consulta? Escríbenos y te responderemos pronto</p>
+                        
+                        <form class="form-modern" id="contactForm">
+                            <div class="form-field">
+                                <input type="text" id="name" required>
+                                <label for="name">Tu nombre</label>
+                            </div>
+                            
+                            <div class="form-field">
+                                <input type="tel" id="phone">
+                                <label for="phone">Teléfono (opcional)</label>
+                            </div>
+                            
+                            <div class="form-field">
+                                <textarea id="message" rows="4" required></textarea>
+                                <label for="message">Tu mensaje</label>
+                            </div>
+                            
+                            <button type="submit" class="btn-modern primary full">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Enviar por WhatsApp</span>
+                            </button>
+                        </form>
+
+                        <div class="social-modern">
+                            <p>O síguenos en:</p>
+                            <div class="social-links-modern">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-tiktok"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Minimalista -->
+    <footer class="footer-modern">
+        <div class="container-wide">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo-footer">
+                        <div class="logo-icon-big">🐟</div>
+                        <div>
+                            <h3>EL CARAJITO</h3>
+                            <p>Mi Rico Sabor Caracino</p>
+                        </div>
+                    </div>
+                    <p class="footer-desc">
+                        El auténtico sabor del mar peruano.<br>
+                        Tradición, frescura y calidad en cada plato.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Navegación</h4>
+                        <a href="#inicio">Inicio</a>
+                        <a href="#sabor">Nosotros</a>
+                        <a href="#platos">Carta</a>
+                        <a href="#opiniones">Opiniones</a>
+                    </div>
+                    
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Contacto</h4>
+                        <a href="tel:947469343">947 469 343</a>
+                        <a href="#contacto">Ubicación</a>
+                        <a href="https://wa.me/51947469343">WhatsApp</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Horario</h4>
+                        <p>Lunes a Domingo</p>
+                        <p><strong>Hasta las 4:00 PM</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cevichería El Carajito. Caraz, Perú</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
