@@ -57,60 +57,16 @@ function updateActiveNav() {
 window.addEventListener('scroll', updateActiveNav);
 
 // ============================================
-// 📋 SUBMENÚ DE PLATOS - Interacción
+// 📋 SUBMENÚ DE PLATOS - Interacción Desktop
 // ============================================
 
-// Soporte táctil y clic para el submenú
+// Soporte para hover en desktop
 const hasSubmenu = document.querySelector('.has-submenu');
 const submenuCarta = document.querySelector('.submenu-carta');
 
 if (hasSubmenu && submenuCarta) {
-    // Toggle submenu en dispositivos táctiles
-    const navDotPlatos = hasSubmenu.querySelector('.nav-dot');
-    let submenuOpen = false;
-
-    // Para dispositivos táctiles/móviles
-    navDotPlatos.addEventListener('click', (e) => {
-        if (window.innerWidth <= 1200) return; // No hacer nada en móvil
-        
-        // En desktop, toggle el menú al hacer clic
-        e.preventDefault();
-        submenuOpen = !submenuOpen;
-        
-        if (submenuOpen) {
-            submenuCarta.style.opacity = '1';
-            submenuCarta.style.visibility = 'visible';
-            submenuCarta.style.pointerEvents = 'auto';
-            submenuCarta.style.left = '50px';
-        } else {
-            submenuCarta.style.opacity = '0';
-            submenuCarta.style.visibility = 'hidden';
-            submenuCarta.style.pointerEvents = 'none';
-            submenuCarta.style.left = '40px';
-        }
-    });
-
-    // Cerrar al hacer clic fuera
-    document.addEventListener('click', (e) => {
-        if (!hasSubmenu.contains(e.target) && submenuOpen) {
-            submenuOpen = false;
-            submenuCarta.style.opacity = '0';
-            submenuCarta.style.visibility = 'hidden';
-            submenuCarta.style.pointerEvents = 'none';
-            submenuCarta.style.left = '40px';
-        }
-    });
-
-    // Cerrar al presionar Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && submenuOpen) {
-            submenuOpen = false;
-            submenuCarta.style.opacity = '0';
-            submenuCarta.style.visibility = 'hidden';
-            submenuCarta.style.pointerEvents = 'none';
-            submenuCarta.style.left = '40px';
-        }
-    });
+    // En desktop, el hover ya funciona por CSS
+    // Este código es solo para asegurar compatibilidad
 }
 
 // Smooth Scroll
@@ -483,6 +439,27 @@ if (mobileToggle && navSide) {
             document.body.classList.remove('menu-open');
         }
     });
+}
+
+// ============================================
+// 📋 SUBMENÚ MÓVIL - Toggle Platos
+// ============================================
+
+const hasSubmenuMobile = document.querySelector('.has-submenu');
+
+if (hasSubmenuMobile) {
+    const navDotMobile = hasSubmenuMobile.querySelector('.nav-dot');
+    
+    // Prevenir navegación cuando se hace clic en el botón de platos en móvil
+    if (navDotMobile) {
+        navDotMobile.addEventListener('click', (e) => {
+            // Solo funciona en móvil
+            if (window.innerWidth <= 1200) {
+                e.preventDefault();
+                hasSubmenuMobile.classList.toggle('open');
+            }
+        });
+    }
 }
 
 // Bento Grid Hover Effect
