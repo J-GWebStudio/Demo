@@ -413,7 +413,7 @@ window.resetForm = resetForm;
 
 const mobileToggle = document.getElementById('mobileToggle');
 const navSide = document.querySelector('.nav-side');
-const menuOverlay = document.querySelector('.menu-overlay');
+const menuOverlay = document.getElementById('menuOverlay');
 
 if (mobileToggle && navSide) {
     mobileToggle.addEventListener('click', () => {
@@ -447,6 +447,18 @@ if (mobileToggle && navSide) {
             menuOverlay.classList.remove('active');
         });
     }
+
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+        if (!navSide.contains(e.target) && !mobileToggle.contains(e.target)) {
+            navSide.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            if (menuOverlay) {
+                menuOverlay.classList.remove('active');
+            }
+        }
+    });
 }
 
 // ============================================
@@ -456,15 +468,14 @@ if (mobileToggle && navSide) {
 const hasSubmenuMobile = document.querySelector('.has-submenu');
 
 if (hasSubmenuMobile) {
-    const navDotMobile = hasSubmenuMobile.querySelector('.nav-dot');
+    const submenuTriggerMobile = hasSubmenuMobile.querySelector('.submenu-trigger');
     
-    // Prevenir navegación cuando se hace clic en el botón de platos en móvil
-    if (navDotMobile) {
-        navDotMobile.addEventListener('click', (e) => {
-            // Solo funciona en móvil
+    if (submenuTriggerMobile) {
+        submenuTriggerMobile.addEventListener('click', (e) => {
             if (window.innerWidth <= 1200) {
                 e.preventDefault();
                 hasSubmenuMobile.classList.toggle('open');
+                submenuTriggerMobile.setAttribute('aria-expanded', hasSubmenuMobile.classList.contains('open') ? 'true' : 'false');
             }
         });
     }

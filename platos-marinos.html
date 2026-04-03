@@ -240,7 +240,7 @@
     </button>
 
     <!-- Menu Overlay -->
-    <div class="menu-overlay"></div>
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Navegación Lateral Moderna -->
     <nav class="nav-side">
@@ -249,12 +249,11 @@
             <span class="logo-text">EL<br>CARAJITO</span>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html#inicio" class="nav-dot" data-text="Inicio"></a></li>
-            <li><a href="index.html#sabor" class="nav-dot" data-text="Nuestro Sabor"></a></li>
-            <li class="has-submenu">
-                <a href="index.html#platos" class="nav-dot active" data-text="Platos">
-                    <i class="submenu-arrow fas fa-chevron-right"></i>
-                </a>
+            <a href="index.html#inicio" class="nav-dot" data-text="Inicio"></a>
+            <a href="index.html#sabor" class="nav-dot" data-text="Nuestro Sabor"></a>
+            <div class="has-submenu">
+                <a href="index.html#platos" class="nav-dot active" data-text="Platos"></a>
+                <button type="button" class="submenu-trigger" aria-expanded="false" aria-label="Nuestra Carta"></button>
                 <div class="submenu-carta">
                     <div class="submenu-header">
                         <h4>Nuestra Carta</h4>
@@ -304,9 +303,9 @@
                         </a>
                     </div>
                 </div>
-            </li>
-            <li><a href="index.html#opiniones" class="nav-dot" data-text="Opiniones"></a></li>
-            <li><a href="index.html#contacto" class="nav-dot" data-text="Contacto"></a></li>
+            </div>
+            <a href="index.html#opiniones" class="nav-dot" data-text="Opiniones"></a>
+            <a href="index.html#contacto" class="nav-dot" data-text="Contacto"></a>
         </ul>
         <div class="nav-social">
             <a href="#"><i class="fab fa-facebook-f"></i></a>

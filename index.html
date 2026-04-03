@@ -48,12 +48,11 @@
             <span class="logo-text">EL<br>CARAJITO</span>
         </div>
         <ul class="nav-links">
-            <li><a href="#inicio" class="nav-dot active" data-text="Inicio"></a></li>
-            <li><a href="#sabor" class="nav-dot" data-text="Nuestro Sabor"></a></li>
-            <li class="has-submenu">
-                <a href="#platos" class="nav-dot" data-text="Platos">
-                    <i class="submenu-arrow fas fa-chevron-right"></i>
-                </a>
+            <a href="#inicio" class="nav-dot active" data-text="Inicio"></a>
+            <a href="#sabor" class="nav-dot" data-text="Nuestro Sabor"></a>
+            <div class="has-submenu">
+                <a href="#platos" class="nav-dot" data-text="Platos"></a>
+                <button type="button" class="submenu-trigger" aria-expanded="false" aria-label="Nuestra Carta"></button>
                 <div class="submenu-carta">
                     <div class="submenu-header">
                         <h4>Nuestra Carta</h4>
@@ -103,9 +102,9 @@
                         </a>
                     </div>
                 </div>
-            </li>
-            <li><a href="#opiniones" class="nav-dot" data-text="Opiniones"></a></li>
-            <li><a href="#contacto" class="nav-dot" data-text="Contacto"></a></li>
+            </div>
+            <a href="#opiniones" class="nav-dot" data-text="Opiniones"></a>
+            <a href="#contacto" class="nav-dot" data-text="Contacto"></a>
         </ul>
         <div class="nav-social">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -120,6 +119,9 @@
         <span></span>
         <span></span>
     </button>
+
+    <!-- Overlay del menú móvil -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Hero Moderno y Diferente -->
     <section class="hero-modern" id="inicio">
